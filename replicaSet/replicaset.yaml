@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-replica-set
+  labels:
+    app: replica-app
+spec:
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        app: nginx
+        context: k8s-course
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+  replicas: 3
+  selector: 
+   matchLabels:
+     context: k8s-course
